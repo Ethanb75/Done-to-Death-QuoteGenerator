@@ -2,76 +2,19 @@
     <head>
         <meta>
         <title>quoteApp</title>
-        <style>
-        html {
-            position: relative;
-            height: 100%;
-        }
-        body {
-            position: relative;
-            height: 100%;
-            background: navy;
-            text-align: center;
-            color: rgba(0,0,0,.65);
-            margin: 0;
-            transition: background-color 1s ease;
-        }
-        .box {
-            margin: 2em 4em;
-            padding: 1.5rem;
-            box-sizing: border-box;
-            border: 1px solid whitesmoke;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-            display: none;
-            margin: 0 auto;
-            text-align: left;
-        }
-        li {
-            font-size: 15px;
-        }
-        </style>
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/app.css">
     </head>
     <body>
         <div class="box">
             <h1>Random Quote Generator</h1>
             <div class="message">
             </div>
-            <button>Clickeroo</button>
+            <button class="tweet">Tweet This</button> | <button class="newQuote">New Quote</button>
         </div>
         
         <script type="text/javascript" src="scripts/jquery.js"></script>
-        <script type="text/javascript">
-          $(document).ready(function() {
-
-            $("button").on("click", function() { 
-              $.getJSON( "https://random-quote-generator.herokuapp.com/api/quotes/random", function( data ) {
-                    var items = [];
-                    //color vars
-                    var randoArr = randoColor();
-                    var value = "rgb(" + randoArr[0] + "," + randoArr[1] + "," + randoArr[2] + ")"
-                    $.each( data, function( key, val ) {
-                        items.push( "<li id='" + key + "'>" + val + "</li>" );
-                    });
-                    $("div > ul").remove();
-                    $( "<ul/>", {
-                        "class": "my-new-list",
-                        html: items.join( "" )
-                    }).appendTo( ".message" ).fadeIn().css("display","inline-block");
-                    $("body").css("background-color",value)
-                });
-              
-            });
-        });
-        function randoColor(){
-            var colorArr = [];
-            for(var i = 0; i<3;i++){
-                colorArr.push(Math.round(Math.random()*255));
-            }
-            return colorArr;
-        }
+        <script type="text/javascript" src="scripts/app.js">
         </script>
     </body>
 </html>
